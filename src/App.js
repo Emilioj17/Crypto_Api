@@ -1,24 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
+import useMoneda from "./Hooks/useMoneda";
+import styled from '@emotion/styled';
+import Imagen from "./Img/cryptomonedas.png";
+
+const Contenedor = styled.div`
+  background-color: #111f2e;
+  color: white;
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-template-rows: 1fr;
+  grid-template-areas: "Derecha Izquierda";
+
+  .Izquierda{
+    grid-area: Izquierda;
+  }
+
+  .Derecha{
+    grid-area: Derecha
+  }
+`;
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Contenedor>
+      <div className="Izquierda">
+        <img src={Imagen} alt="" />
+      </div>
+      <div className="Derecha">
+        Hola
+      </div>
+    </Contenedor>
   );
 }
 
