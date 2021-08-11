@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 
-const useMoneda = (label, estadoInicial, monedas) => {
+const useCrypto = (label, estadoInicial, monedas) => {
     const [estado, setEstado] = useState(estadoInicial);
 
     const HandlerChange = (e) => {
         setEstado(e.target.value);
-        // console.log(e.target.value);
+        console.log(e.target.value);
     }
 
     const Seleccionar = () => (
@@ -13,11 +13,11 @@ const useMoneda = (label, estadoInicial, monedas) => {
             <label htmlFor="">{label}</label>
             <select name="" id="" onChange={(e)=>HandlerChange(e)}>
                 <option>Elige una Opcion</option>
-                {monedas.map(moneda=>(<option key={moneda.simbolo} value={moneda.simbolo}>{moneda.nombre}</option>))}
+                {monedas.map(moneda=>(<option key={moneda.CoinInfo.Name} value={moneda.CoinInfo.Name}>{moneda.CoinInfo.FullName}</option>))}
             </select>
         </div>
     )
     
     return [estado, Seleccionar, setEstado];
 }
-export default useMoneda;
+export default useCrypto;

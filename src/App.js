@@ -1,6 +1,8 @@
 import styled from '@emotion/styled';
 import Imagen from "./Img/cryptomonedas.png";
 import Formulario from "./components/Formulario";
+import { useEffect, useState } from 'react';
+import Resultado from './components/Resultado';
 
 const Contenedor = styled.div`
   background-color: #111f2e;
@@ -23,6 +25,20 @@ const Contenedor = styled.div`
 `;
 
 function App() {
+  const [listaMonedas, setListaMonedas] = useState([]);
+  const [listaResultado, setListaResultado] = useState([]);
+  const [configuracion, setConfiguracion] = useState([]);
+  useEffect(() => {
+    const AlComienzo = async () => {
+      const response = await fetch(`https://min-api.cryptocompare.com/data/top/totalvolfull?limit=10&tsym=USD`);
+      const data = await response.json();
+      setListaMonedas(data.Data);
+      // console.log(data.Data);
+    }
+    AlComienzo();
+  }, [])
+
+
   return (
     <Contenedor>
       <div className="Izquierda">
@@ -30,7 +46,15 @@ function App() {
       </div>
       <div className="Derecha">
         <h1>Cotizador de Monedas</h1>
-        <Formulario />
+        <Formulario
+          listaMonedas={listaMonedas}
+          setListaResultado={setListaResultado}
+          setConfiguracion={setConfiguracion}
+        />
+        <Resultado
+          listaResultado={listaResultado}
+          configuracion={configuracion}
+        />
       </div>
     </Contenedor>
   );
