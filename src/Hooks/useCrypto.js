@@ -5,7 +5,6 @@ const useCrypto = (label, estadoInicial, monedas) => {
 
     const HandlerChange = (e) => {
         setEstado(e.target.value);
-        console.log(e.target.value);
     }
 
     const Seleccionar = () => (
